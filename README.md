@@ -6,7 +6,7 @@ This is a custom React Native component called `CreditCardList` that displays a 
 
 
 ## Clone this repo using 
-https://github.com/HackX-IN/CardsAnimation.git
+https://github.com/HackX-IN/Cards
 
 ## Features
 
