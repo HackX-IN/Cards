@@ -1,7 +1,13 @@
 import React from "react";
 import { useSharedValue } from "react-native-reanimated";
 import Card from "./Card";
-const CardContainer = ({ data, maxVisibleItems }) => {
+const CardContainer = ({
+  data,
+  maxVisibleItems,
+  isModalVisible,
+  setModalVisible,
+  toggleModal,
+}) => {
   const animatedValue = useSharedValue(0);
   const currentIndex = useSharedValue(0);
   const prevIndex = useSharedValue(0);

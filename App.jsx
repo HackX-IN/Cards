@@ -1,18 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
 import { StyleSheet, SafeAreaView, Image, StatusBar } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CardContainer from "./src/Components/CardContainer";
 import { Text } from "react-native";
 import { View } from "react-native";
-import { Data } from "./Data";
+import { Data } from "./db";
+
 const StackCarouselScreen = () => {
   const [debitCards, setDebitCards] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/debitCards")
+    fetch("http://192.168.1.7:8000/Data")
       .then((response) => response.json())
-      .then((data) => setDebitCards(data))
+      .then((data) => console.log(data))
       .catch((error) => console.log("Error fetching data:", error));
   }, []);
 
@@ -34,7 +35,7 @@ const StackCarouselScreen = () => {
         <Text style={styles.text1}>cards</Text>
       </View>
       <SafeAreaView style={styles.container}>
-        <CardContainer data={Data} maxVisibleItems={4} />
+        <CardContainer data={Data || debitCards} maxVisibleItems={4} />
       </SafeAreaView>
     </GestureHandlerRootView>
   );
@@ -57,12 +58,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
-
     fontWeight: "600",
   },
   text1: {
     fontSize: 25,
-
     fontWeight: "600",
   },
   header: {
@@ -75,7 +74,6 @@ const styles = StyleSheet.create({
   },
   Headertext: {
     fontSize: 25,
-
     fontWeight: "900",
   },
   image: {
